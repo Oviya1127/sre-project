@@ -18,9 +18,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                scp -r * ubuntu@<YOUR_SERVER_IP>:/var/www/myapp/
+                scp -r * ubuntu@44.202.226.195:/var/www/myapp/
 
-                ssh ubuntu@44.202.226.195"
+                ssh ubuntu@44.202.226.195
                 cd /var/www/myapp &&
                 sudo systemctl restart nginx
                 "
