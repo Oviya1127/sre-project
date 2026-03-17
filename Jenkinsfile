@@ -4,10 +4,10 @@ pipeline {
     stages {
 
         stage('Clone') {
-            steps {
-                git 'https://github.com/Oviya1127/sre-project.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/Oviya1127/sre-project.git'
+    }
+}
 
         stage('Build') {
             steps {
