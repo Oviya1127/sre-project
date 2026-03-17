@@ -20,7 +20,7 @@ pipeline {
                 sh '''
                 scp -r * ubuntu@<YOUR_SERVER_IP>:/var/www/myapp/
 
-                ssh ubuntu@<YOUR_SERVER_IP> "
+                ssh ubuntu@44.202.226.195"
                 cd /var/www/myapp &&
                 sudo systemctl restart nginx
                 "
