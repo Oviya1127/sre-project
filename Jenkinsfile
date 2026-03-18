@@ -4,10 +4,10 @@ pipeline {
     stages {
 
         stage('Clone') {
-    steps {
-        git branch: 'main', url: 'https://github.com/Oviya1127/sre-project.git'
-    }
-}
+            steps {
+                git branch: 'main', url: 'https://github.com/Oviya1127/sre-project.git'
+            }
+        }
 
         stage('Build') {
             steps {
@@ -18,10 +18,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 sh '''
-                scp -r * ubuntu@44.202.226.195:/var/www/myapp/
+                scp -i /var/lib/jenkins/sre.pem -o StrictHostKeyChecking=no -r * ubuntu@44.202.226.195:/var/www/html/
 
-                ssh ubuntu@44.202.226.195
-                cd /var/www/myapp &&
+                ssh -i /var/lib/jenkins/sre.pem -o StrictHostKeyChecking=no ubuntu@44.202.226.195 "
                 sudo systemctl restart nginx
                 "
                 '''
