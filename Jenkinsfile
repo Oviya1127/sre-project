@@ -23,9 +23,9 @@ pipeline {
                 ubuntu@44.202.226.195:/home/ubuntu/
 
                 ssh -i /var/lib/jenkins/sre.pem -o StrictHostKeyChecking=no ubuntu@44.202.226.195 "
-                sudo rm -rf /var/www/html/*
-                sudo mv /home/ubuntu/* /var/www/html/
-                sudo pkill -f app.py || true
+                sudo rm -rf /var/www/html/* && \
+                sudo mv /home/ubuntu/* /var/www/html/ && \
+                sudo pkill -f app.py || true && \
                 nohup python3 /var/www/html/app.py > /dev/null 2>&1 &
                 "
                 '''
